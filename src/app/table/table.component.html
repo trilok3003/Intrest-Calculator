@@ -1,0 +1,18 @@
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+  <th>Date</th>
+  <th>From</th>
+  <th>Amount</th>
+  <th>Rate</th>
+  <th>Intrest</th>
+    <th>Total</th>
+</tr>
+<tr *ngFor="let item of data.loans">
+  <td>{{item.date}}</td>
+  <td>{{item.vendor}}</td>
+  <td align="right">{{item.amount | currency:data.currency}}</td>
+  <td align="right">{{item.per | currency:data.currency}} = {{item.intrest | currency:data.currency}}</td>
+  <td align="right">{{getIntrest(item.amount,item.date,item.per,item.intrest ) | currency:data.currency}}</td>
+  <td align="right">{{item.amount + getIntrest(item.amount,item.date,item.per,item.intrest ) | currency:data.currency}}</td>
+</tr>
+</table>
